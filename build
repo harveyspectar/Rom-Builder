@@ -4,14 +4,15 @@ rm -rf .repo & # lets remove unnecessary things, so that no storage issue can oc
 
 # Normal build steps
 . build/envsetup.sh
-lunch lineage_whyred-userdebug
-export SELINUX_IGNORE_NEVERALLOWS=true
-export CCACHE_DIR=/tmp/ccache
+lunch lineage_tissot-user
+#export SELINUX_IGNORE_NEVERALLOWS=true
+export BUILD_TYPE="${BUILD_TYPE}"
+#export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
-export USE_CCACHE=1
-ccache -M 20G
-ccache -o compression=true
-ccache -z
+export USE_CCACHE=0
+#ccache -M 20G
+#ccache -o compression=true
+#ccache -z
 
 up(){
 	curl --upload-file $1 https://transfer.sh/

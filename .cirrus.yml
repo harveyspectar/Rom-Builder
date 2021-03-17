@@ -1,20 +1,20 @@
 env: # Environt variable to pass to all tasks
     CIRRUS_CLONE_DEPTH: 1 # No need to clone with whole history
     CIRRUS_WORKING_DIR: "/tmp/ci" # Where to clone repo
-    rclone_config: "ENCRYPTED[cd748227cb60043e7066e426e166988ff5b0fb70341bcb4f661b5c255f19e90f6cb144de4ffdfdd18f201b0028a59b3a]"
+    BOT_TOKEN: ENCRYPTED[8a491f640c3e261353ace025117f33ac84f9bb571024634ada04505ff32eef9c7365ea77b2d491b2f889529a2aa5ff4e]
 
 task:
-    name: ItsVixano
+    name: Rom-Builder
     timeout_in: 120m
     container:
       image: apon77/aosp:latest
       cpu: 16
       memory: 24G
-    download_ccache_background_script:
-      - ./download_ccache
+#    download_ccache_background_script:
+#      - ./download_ccache
     sync_script:
       - ./sync
     build_script:
       - ./build
-    upload_ccache_script:
-      - ./upload_ccache
+#    upload_ccache_script:
+#      - ./upload_ccache
