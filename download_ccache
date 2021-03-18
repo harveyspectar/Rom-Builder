@@ -13,4 +13,5 @@ cd /tmp # Where to download cccahe
 time curl -O -L $url || time aria2c $url
 ls -lh ccache.tar.gz
 time tar xf ccache.tar.gz
+ls -lh ccache/
 find ccache.tar.gz -delete

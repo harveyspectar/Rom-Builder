@@ -2,9 +2,8 @@
 cd /tmp/rom # Depends on where source got synced
 rm -rf .repo & # lets remove unnecessary things, so that no storage issue can occur
 
-# Clear RAM
-sudo sh -c "sync"
-sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"
+# Fstrim
+sudo sh -c "fstrim -Av"
 
 # Normal build steps
 . build/envsetup.sh
@@ -14,7 +13,7 @@ export BUILD_TYPE="${BUILD_TYPE}"
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
-ccache -M 30G
+ccache -M 20G
 #ccache -o compression=true
 #ccache -z
 
@@ -24,17 +23,17 @@ up(){
 }
 
 make_metalava(){
-	mka api-stubs-docs -j$(nproc --all)
-	mka system-api-stubs-docs -j$(nproc --all)
-	mka test-api-stubs-docs -j$(nproc --all)
+	mka api-stubs-docs -j16
+	mka system-api-stubs-docs -j16
+	mka test-api-stubs-docs -j16
 }
 
 make_rom(){
-	mka bacon -j$(nproc --all)
+	mka bacon -j16
 	zip=$(up out/target/product/tissot/*zip)
 	echo " "
 	echo "$zip"
 }
 
-#make_metalava
+make_metalava
 make_rom
