@@ -2,6 +2,10 @@
 cd /tmp/rom # Depends on where source got synced
 rm -rf .repo & # lets remove unnecessary things, so that no storage issue can occur
 
+# Clear RAM
+sudo sh -c "sync"
+sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"
+
 # Normal build steps
 . build/envsetup.sh
 lunch lineage_tissot-user
@@ -10,7 +14,7 @@ export BUILD_TYPE="${BUILD_TYPE}"
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
-ccache -M 20G
+ccache -M 30G
 #ccache -o compression=true
 #ccache -z
 
