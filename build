@@ -20,13 +20,13 @@ up(){
 }
 
 make_metalava(){
-	mka api-stubs-docs
-	mka system-api-stubs-docs
-	mka test-api-stubs-docs
+	mka api-stubs-docs -j$(nproc --all)
+	mka system-api-stubs-docs -j$(nproc --all)
+	mka test-api-stubs-docs -j$(nproc --all)
 }
 
 make_rom(){
-	mka bacon -j16
+	mka bacon -j$(nproc --all)
 	zip=$(up out/target/product/tissot/*zip)
 	echo " "
 	echo "$zip"
