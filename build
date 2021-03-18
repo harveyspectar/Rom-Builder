@@ -13,7 +13,7 @@ export BUILD_TYPE="${BUILD_TYPE}"
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
-ccache -M 20G
+ccache -M 30G
 #ccache -o compression=true
 #ccache -z
 
@@ -29,11 +29,11 @@ make_metalava(){
 }
 
 make_rom(){
-	mka bacon -j16
+	mka bacon -j30
 	zip=$(up out/target/product/tissot/*zip)
-	echo " "
+	echo ""
 	echo "$zip"
 }
 
-make_metalava
+#make_metalava
 make_rom
