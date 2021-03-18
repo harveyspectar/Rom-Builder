@@ -7,15 +7,16 @@ rm -rf .repo & # lets remove unnecessary things, so that no storage issue can oc
 lunch lineage_tissot-user
 #export SELINUX_IGNORE_NEVERALLOWS=true
 export BUILD_TYPE="${BUILD_TYPE}"
-#export CCACHE_DIR=/tmp/ccache
+export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
-export USE_CCACHE=0
-#ccache -M 20G
-#ccache -o compression=true
-#ccache -z
+export USE_CCACHE=1
+ccache -M 20G
+ccache -o compression=true
+ccache -z
 
 up(){
-	curl --upload-file $1 https://transfer.sh/
+#    curl --upload-file $1 https://transfer.sh/
+    curl --upload-file $1 https://oshi.at/$(basename $1); echo # 14 days, 10 GB limit
 }
 
 make_metalava(){
@@ -26,7 +27,7 @@ make_metalava(){
 
 make_rom(){
 	mka bacon -j16
-	zip=$(up out/target/product/whyred/*zip)
+	zip=$(up out/target/product/tissot/*zip)
 	echo " "
 	echo "$zip"
 }
