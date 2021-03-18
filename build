@@ -11,8 +11,8 @@ export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
 ccache -M 20G
-ccache -o compression=true
-ccache -z
+#ccache -o compression=true
+#ccache -z
 
 up(){
 #    curl --upload-file $1 https://transfer.sh/
@@ -32,5 +32,5 @@ make_rom(){
 	echo "$zip"
 }
 
-make_metalava
+#make_metalava
 make_rom
