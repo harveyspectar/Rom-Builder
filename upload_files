@@ -7,5 +7,5 @@ up(){
 }
 
 zip=$(up out/target/product/tissot/*zip)
-echo ""
+echo " "
 echo "$zip"

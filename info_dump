@@ -2,15 +2,20 @@
 # Lets see machine specifications and environments
 echo "CPUs: "
 nproc --all
+echo " "
 echo "RAM: "
 free -h
+echo " "
 echo "Diskusage: "
 df -h
+echo " "
 echo "Enviornment: "
 cat /etc/os*
+echo " "
 env
+#echo " "
 # Check persistent folder for contents
-echo "Cache: "
-ls -lh /tmp/ccache
-echo "Out: "
-ls -lh /tmp/rom/out
+#echo "Cache: "
+#ls -lh /tmp/ccache
+#echo "Out: "
+#ls -lh /tmp/rom/out

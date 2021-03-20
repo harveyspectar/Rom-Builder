@@ -16,8 +16,8 @@ export BUILD_TYPE=OFFICIAL
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
-ccache -M 25G
-ccache -o compression=true
+ccache -M 50G
+#ccache -o compression=true
 ccache -z
 
 make_metalava(){
@@ -35,4 +35,4 @@ make_rom
 
 # Copy build artifacts to ci dir for uploading on ci
 cp out/target/product/tissot/*.zip /tmp/ci/build_artifacts/
-cp out/target/product/tissot/*.zip /tmp/ci/build_artifacts/
+#cp out/target/product/tissot/*.md5 /tmp/ci/build_artifacts/
