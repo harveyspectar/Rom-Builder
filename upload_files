@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd /tmp/rom
+up(){
+#    curl --upload-file $1 https://transfer.sh/
+    curl --upload-file $1 https://oshi.at/$(basename $1); echo # 14 days, 10 GB limit
+}
+
+zip=$(up out/target/product/tissot/*zip)
+echo ""
+echo "$zip"

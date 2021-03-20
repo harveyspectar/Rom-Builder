@@ -3,20 +3,15 @@ cd /tmp/rom # Depends on where source got synced
 rm -rf .repo & # lets remove unnecessary things, so that no storage issue can occur
 
 # Normal build steps
-. build/envsetup.sh
+source build/envsetup.sh
 lunch lineage_tissot-user
 export BUILD_TYPE=OFFICIAL
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
-ccache -M 30G
+ccache -M 50G
 ccache -o compression=true
 ccache -z
-
-up(){
-#    curl --upload-file $1 https://transfer.sh/
-    curl --upload-file $1 https://oshi.at/$(basename $1); echo # 14 days, 10 GB limit
-}
 
 make_metalava(){
 	mka api-stubs-docs
@@ -26,9 +21,6 @@ make_metalava(){
 
 make_rom(){
 	mka bacon -j16
-	zip=$(up out/target/product/tissot/*zip)
-	echo ""
-	echo "$zip"
 }
 
 make_metalava

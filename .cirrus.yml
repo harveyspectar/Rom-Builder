@@ -10,11 +10,18 @@ task:
       image: apon77/aosp:latest
       cpu: 16
       memory: 24G
-    download_ccache_background_script:
-      - ./download_ccache
+    aosp_ccache_cache:
+      folder: /tmp/ccache
+      reupload_on_changes: true # since there is a fingerprint script
+      fingerprint_script:
+        - mkdir /tmp/ccache
+#    download_ccache_script:
+#      - bash download_ccache
     sync_script:
-      - ./sync
+      - bash sync
     build_script:
-      - ./build
+      - bash build
+    upload_ccache_script:
+      - bash upload_files
 #    upload_ccache_script:
 #      - ./upload_ccache
