@@ -1,12 +1,16 @@
 #!/bin/bash
-
 # Lets see machine specifications and environments
-df -h
+echo "CPUs: "
+nproc --all
+echo "RAM: "
 free -h
-nproc
+echo "Diskusage: "
+df -h
+echo "Enviornment: "
 cat /etc/os*
 env
-
 # Check persistent folder for contents
+echo "Cache: "
 ls -lh /tmp/ccache
+echo "Out: "
 ls -lh /tmp/rom/out

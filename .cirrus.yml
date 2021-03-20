@@ -12,7 +12,7 @@ task:
       memory: 24G
     aosp_persistent_cache:
       folder: /tmp/ccache
-      folder: /tmp/rom/out
+#      folder: /tmp/rom/out
       reupload_on_changes: true # false since there is a fingerprint script
       fingerprint_script:
         - echo $CIRRUS_OS
@@ -27,11 +27,11 @@ task:
       - bash sync
     build_script:
       - bash build
-    build_zip_artifacts:
-      path: "/tmp/rom/out/target/product/tissot/*.zip"
+    build_zip_artifacts: # max 1GB total for free users
+      path: "build_artifacts/*.zip"
       type: application/zip
     build_md5_artifacts:
-      path: "/tmp/rom/out/target/product/tissot/*.md5"
+      path: "build_artifacts/*.md5"
       type: text/plain
     upload_files_script:
       - bash upload_files
