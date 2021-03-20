@@ -5,23 +5,34 @@ env: # Environt variable to pass to all tasks
 
 task:
     name: Rom-Builder
-    timeout_in: 120m
+    timeout_in: 120m # Timeout in minutes, max 120 for free users
     container:
       image: apon77/aosp:latest
       cpu: 16
       memory: 24G
     aosp_ccache_cache:
       folder: /tmp/ccache
-      reupload_on_changes: true # since there is a fingerprint script
+      folder: /tmp/rom/out
+      reupload_on_changes: true # false since there is a fingerprint script
       fingerprint_script:
-        - mkdir /tmp/ccache
+        - echo $CIRRUS_OS
+      populate_script:
+        - mkdir -p /tmp/ccache
+        - mkdir -p /tmp/rom/out
 #    download_ccache_script:
 #      - bash download_ccache
+    info_dump_script:
+      - bash info_dump
     sync_script:
       - bash sync
     build_script:
       - bash build
-    upload_ccache_script:
+    build_artifacts:
+      path: "/tmp/rom/out/target/product/tissot/*.zip"
+      type: application/zip
+      path: "/tmp/rom/out/target/product/tissot/*.md5"
+      type: text/plain
+    upload_files_script:
       - bash upload_files
 #    upload_ccache_script:
 #      - ./upload_ccache

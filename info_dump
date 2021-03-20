@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Lets see machine specifications and environments
+df -h
+free -h
+nproc
+cat /etc/os*
+env
+
+# Check persistent folder for contents
+ls -lh /tmp/ccache
+ls -lh /tmp/rom/out
