@@ -10,7 +10,7 @@ task:
       image: apon77/aosp:latest
       cpu: 16
       memory: 24G
-    aosp_ccache_cache:
+    aosp_persistent_cache:
       folder: /tmp/ccache
       folder: /tmp/rom/out
       reupload_on_changes: true # false since there is a fingerprint script
@@ -27,9 +27,10 @@ task:
       - bash sync
     build_script:
       - bash build
-    build_artifacts:
+    build_zip_artifacts:
       path: "/tmp/rom/out/target/product/tissot/*.zip"
       type: application/zip
+    build_md5_artifacts:
       path: "/tmp/rom/out/target/product/tissot/*.md5"
       type: text/plain
     upload_files_script:
