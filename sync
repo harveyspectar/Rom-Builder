@@ -26,7 +26,7 @@ git clone https://github.com/harveyspectar/android_device_xiaomi_phoenix device/
 #git clone https://github.com/harveyspectar/android_device_xiaomi_phoenix device/xiaomi/phoenix --single-branch --depth=1
 git clone https://github.com/harveyspectar/android_device_xiaomi_sm6150-common device/xiaomi/sm6150-common --single-branch --depth=1
 #git clone https://github.com/harveyspectar/android_device_xiaomi_sm6150-common device/xiaomi/sm6150-common --single-branch --depth=1
-git clone https://github.com/harveyspectar/oss_kernel_xiaomi_sm6150 --single-branch --depth=1
+git clone https://github.com/harveyspectar/oss_kernel_xiaomi_sm6150 kernel/xiaomi/sm6150 --single-branch --depth=1
 git clone https://github.com/crdroidandroid/proprietary_vendor_xiaomi/ -b 11.0-phoenix vendor/xiaomi --single-branch --depth=1
 git clone https://github.com/LineageOS/android_hardware_xiaomi hardware/xiaomi --single-branch --depth=1
 rm -rf vendor/xiaomi/miuicamera
