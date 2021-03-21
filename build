@@ -11,8 +11,8 @@ rm -rf .repo & # lets remove unnecessary things, so that no storage issue can oc
 
 # Normal build steps
 source build/envsetup.sh
-lunch lineage_tissot-user
-export BUILD_TYPE=OFFICIAL
+lunch aosp_phoenix-userdebug
+export BUILD_TYPE=UNOFFICIAL
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
