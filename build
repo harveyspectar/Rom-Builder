@@ -23,14 +23,14 @@ ccache -z
 make_metalava(){
 	mka api-stubs-docs
 	mka system-api-stubs-docs
-	mka test-api-stubs-docs
+#	mka test-api-stubs-docs
 }
 
 make_rom(){
 	mka bacon -j16
 }
 
-#make_metalava
+make_metalava
 make_rom
 
 # Copy build artifacts to ci dir for uploading on ci
