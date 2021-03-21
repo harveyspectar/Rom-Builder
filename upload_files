@@ -6,6 +6,6 @@ up(){
     curl --upload-file $1 https://oshi.at/$(basename $1); echo # 14 days, 10 GB limit
 }
 
-zip=$(up out/target/product/tissot/*zip)
+zip=$(up out/target/product/phoenix/*zip)
 echo " "
 echo "$zip"
